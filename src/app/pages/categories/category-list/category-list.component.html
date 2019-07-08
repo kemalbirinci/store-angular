@@ -1,0 +1,30 @@
+<div style="float:left">
+    <h3>Kategoriler</h3>
+</div>
+<a routerLink="/categories/add" class="btn btn-primary float-right">Yeni Kategori Ekle</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Kategori Adı</th>
+            <th scope="col">Durum</th>
+            <th scope="col">Sıralama</th>
+            <th scope="col">İşlem</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let category of categories">
+            <th scope="row">{{category.categoryID}}</th>
+            <td>{{category.categoryName}}</td>
+            <td>{{category.isActive? "Aktif":"Pasif"}}</td>
+            <td>{{category.order}}</td>
+            <td>
+                <div class="btn-group">
+                    <a href="#" [routerLink]="['/categories/edit/'+ category.categoryID]"
+                        routerLinkActive="router-link-active" class="btn btn-success">Düzenle</a>
+                    <a href="#" (click)="deleteCategory(category)" class="btn btn-danger">Sil</a>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

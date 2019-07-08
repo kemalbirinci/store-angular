@@ -1,0 +1,30 @@
+<div style="float:left">
+    <h3>Kategori Düzenle</h3>
+</div>
+<div class="text-right">
+    <a routerLink="/categories/add" class="btn btn-primary  mr-1">Yeni Kategori Ekle</a>
+    <a routerLink="/categories" class="btn btn-primary">Kategoriler</a>
+</div>
+<div class="clearfix"></div>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="category">
+    <input type="hidden" name="categoryID" class="form-control" formControlName="categoryID">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label>Kategori Adı</label>
+            <input type="text" name="categoryName" class="form-control" formControlName="categoryName">
+        </div>
+
+        <div class="form-group">
+            <label>Sıralama</label>
+            <input type="number" name="order" class="form-control" formControlName="order">
+        </div>
+
+        <div class="form-group  form-check">
+            <input type="checkbox" name="isActive" class="form-check-input" formControlName="isActive">
+            <label class="form-check-label" for="isActive">Aktif</label>
+        </div>
+
+        <button [disabled]="!form.valid" type="submit" class="btn btn-primary">Güncelle</button>
+    </div>
+
+</form>
